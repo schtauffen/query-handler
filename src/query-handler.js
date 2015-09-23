@@ -1,4 +1,4 @@
-//! QueryHandler.js v1.0.7 | (c) 2015 Zach Dahl | MIT License
+//! QueryHandler.js v1.2.0 | (c) 2015 Zach Dahl | MIT License
 class Query {
   constructor(string) {
     this.initialString = string;
@@ -39,6 +39,30 @@ class Query {
       return self.pairToString(key, val);
     });
     return "?" + result.join('&');
+  }
+  
+  get string() {
+    return this.getQueryString();
+  }
+  
+  get initial() {
+    return this.initialString;
+  }
+  
+  has(key) {
+    return this.query.hasOwnProperty(key);
+  }
+  
+  get(key, def) {
+    return this.has(key)?this.query[key]:typeof def === "undefined"?null:def;
+  }
+  
+  set(key, val) {
+    this.query[key] = val;
+  }
+  
+  remove(key) {
+    delete this.query[key];
   }
 
   pairToString(key, val) {

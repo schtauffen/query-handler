@@ -1,4 +1,4 @@
-//! QueryHandler.js v1.0.7 | (c) 2015 Zach Dahl | MIT License
+//! QueryHandler.js v1.2.0 | (c) 2015 Zach Dahl | MIT License
 (function (root, factory) {
   if (typeof define === "function" && define.amd) {
     define(["exports"], factory);
@@ -66,6 +66,36 @@
             return self.pairToString(key, val);
           });
           return "?" + result.join("&");
+        }
+      },
+      string: {
+        get: function () {
+          return this.getQueryString();
+        }
+      },
+      initial: {
+        get: function () {
+          return this.initialString;
+        }
+      },
+      has: {
+        value: function has(key) {
+          return this.query.hasOwnProperty(key);
+        }
+      },
+      get: {
+        value: function get(key, def) {
+          return this.has(key) ? this.query[key] : typeof def === "undefined" ? null : def;
+        }
+      },
+      set: {
+        value: function set(key, val) {
+          this.query[key] = val;
+        }
+      },
+      remove: {
+        value: function remove(key) {
+          delete this.query[key];
         }
       },
       pairToString: {
