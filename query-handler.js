@@ -1,20 +1,22 @@
-//! QueryHandler.js v1.0.0 | (c) 2015 Zach Dahl | MIT License
-
-"use strict";
-
-var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
-
-(function (window, factory) {
+//! QueryHandler.js v1.0.1 | (c) 2015 Zach Dahl | MIT License
+(function (factory) {
   if (typeof define === "function" && define.amd) {
-    define(factory);
-  } else if (typeof exports === "object") {
-    module.exports = factory();
-  } else {
-    window.QueryHandler = factory();
+    define(["exports"], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(exports);
   }
-})(undefined, function () {
+})(function (exports) {
+  "use strict";
+
+  var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+  exports.QueryHandler = QueryHandler;
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
   var Query = (function () {
     function Query(string) {
       _classCallCheck(this, Query);
@@ -75,5 +77,7 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
     return Query;
   })();
 
-  return Query;
+  function QueryHandler(q) {
+    return new Query(q);
+  }
 });
