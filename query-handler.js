@@ -1,11 +1,13 @@
 //! QueryHandler.js v1.0.1 | (c) 2015 Zach Dahl | MIT License
-(function (factory) {
+(function (root, factory) {
   if (typeof define === "function" && define.amd) {
     define(["exports"], factory);
   } else if (typeof exports !== "undefined") {
     factory(exports);
+  } else {
+    factory(root);
   }
-})(function (exports) {
+})(this, function (exports) {
   "use strict";
 
   var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
