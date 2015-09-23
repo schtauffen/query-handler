@@ -28,9 +28,9 @@ class Query {
 
   getQueryString() {
     let self = this;
-    let result = $.map(this.query, function(val, key) {
+    let result = this.query.map(function(val, key) {
       if (val instanceof Array) {
-        return $.map(val, function(v, i) {
+        return val.map(function(v, i) {
           return self.pairToString(key, v);
         }).join("&");
       }
