@@ -1,4 +1,4 @@
-//! QueryHandler.js v1.0.0 | (c) 2015 Zach Dahl | MIT License
+//! QueryHandler.js v1.0.7 | (c) 2015 Zach Dahl | MIT License
 (function (root, factory) {
   if (typeof define === "function" && define.amd) {
     define(["exports"], factory);
@@ -55,7 +55,9 @@
       getQueryString: {
         value: function getQueryString() {
           var self = this;
-          var result = this.query.map(function (val, key) {
+          var q = this.query;
+          var result = Object.keys(q).map(function (key, _) {
+            var val = q[key];
             if (val instanceof Array) {
               return val.map(function (v, i) {
                 return self.pairToString(key, v);

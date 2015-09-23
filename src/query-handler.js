@@ -1,4 +1,4 @@
-//! QueryHandler.js v1.0.0 | (c) 2015 Zach Dahl | MIT License
+//! QueryHandler.js v1.0.7 | (c) 2015 Zach Dahl | MIT License
 class Query {
   constructor(string) {
     this.initialString = string;
@@ -28,7 +28,9 @@ class Query {
 
   getQueryString() {
     let self = this;
-    let result = this.query.map(function(val, key) {
+    let q = this.query;
+    let result = Object.keys(q).map(function(key, _) {
+      let val = q[key];
       if (val instanceof Array) {
         return val.map(function(v, i) {
           return self.pairToString(key, v);
